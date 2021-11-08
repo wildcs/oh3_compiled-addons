@@ -1,12 +1,11 @@
 ## Changelog:
-NEW VERSION 2021-10-27:
+2021-10-27 NEW BRIDGE VERSION : 
 
    !! Devices need now a bridge where the cloud-login-credetntials has to be set !!
    So you have to add the bridge-thing manually and add the devices again from your inbox or discovered devices of your binding!
 
 ![AddBridge](https://user-images.githubusercontent.com/40909464/139082881-e7e1eeed-c550-4d91-8a3a-e6e238e94c4b.png)
 ![addDiscovered](https://user-images.githubusercontent.com/40909464/139082902-6de4d9f2-4d78-40c7-9d34-987e787b38cc.png)
-
 
 
 # TapoControl Binding
@@ -39,6 +38,16 @@ The following Tapo-Devices are supported
 * Color (Color)
 * Wi-Fi signal (SignalStrength)
 * On-Time (Time in seconds device is switched on)
+
+### L900 MultiColor LightStrip (WiFi)
+
+* Light On/Off
+* Brightnes (Dimmer)  0-100 %
+* ColorTemperature (Number) 2500-6500 K
+* Color (Color)
+* Wi-Fi signal (SignalStrength)
+* On-Time (Time in seconds device is switched on)
+
 
 ## Prerequisites
 
@@ -82,16 +91,18 @@ All devices support some of the following channels:
 
 | group     | channel          |type                    | description                  | things supporting this channel  |
 |-----------|----------------- |------------------------|------------------------------|---------------------------------|
-| actuator  | output           | Switch                 | Power device on or off       | P100, P105                      |
-|           | brightness       | Dimmer                 | Brightness 0-100%            | L510, L530                      |
-|           | colorTemperature | Number                 | White-Color-Temp 2500-6500K  | L510, L530                      |
-|           | color            | Color                  | Color                        | L530                            |
-| device    | wifiSignal       | system.signal-strength | WiFi-quality-level           | P100, P105, L510, L530          |
-|           | onTime           | QuantityType <Time>    | seconds output is on         | P100, P105, L510, L530          |
+| actuator  | output           | Switch                 | Power device on or off       | P100, P105,L510, L530, L900     |
+|           | brightness       | Dimmer                 | Brightness 0-100%            | L510, L530, L900                |
+|           | colorTemperature | Number                 | White-Color-Temp 2500-6500K  | L510, L530, L900                |
+|           | color            | Color                  | Color                        | L530, L900                       |
+| device    | wifiSignal       | system.signal-strength | WiFi-quality-level           | P100, P105, L510, L530, L900    |
+|           | onTime           | QuantityType <Time>    | seconds output is on         | P100, P105, L510, L530, L900    |
+
 
 ## Channel Refresh
 
-When the thing receives a `RefreshType` command the thing will send a new refreshComand.
+When the thing receives a `RefreshType` command the thing will send a new refreshRequest over http.
+To minimize network traffic the default refresh-rate is set to 30 seconds. This can be reduced down to 10 seconds in advanced settings of the device. If any command was sent to a channel, it will do an immediately refresh of the whole device.
 
 
 ## Full Example
@@ -99,10 +110,11 @@ When the thing receives a `RefreshType` command the thing will send a new refres
 ### tapocontrol.things:
 
 ```
-tapocontrol:bridge:myTapoBridge                     "Cloud-Login"               [ username="you@yourpovide.com", password="verysecret" ]
+tapocontrol:bridge:myTapoBridge                     "Cloud-Login"               [ username="you@yourpovider.com", password="verysecret" ]
 tapocontrol:P100:myTapoBridge:mySocket              "My-Socket"                 [ ipAddress="192.168.178.150", pollingInterval=30 ]
 tapocontrol:L510_Series:myTapoBridge:whiteBulb      "white-light"               [ ipAddress="192.168.178.151", pollingInterval=30 ]
 tapocontrol:L530_Series:myTapoBridge:colorBulb      "color-light"               [ ipAddress="192.168.178.152", pollingInterval=30 ]
+tapocontrol:L900:myTapoBridge:myLightStrip          "light-strip"               [ ipAddress="192.168.178.153", pollingInterval=30 ]
 ``` 
 
 ### tapocontrol.items:
