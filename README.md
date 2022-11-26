@@ -48,7 +48,7 @@ The following Tapo-Devices are supported
 * today EnergyUsage (Wh)
 * today Runtime (Time in seconds device was on today)
 
-### L510/L510(Series) dimmable SmartBulb-/Spot (WiFi)
+### L510/L610(Series) dimmable SmartBulb-/Spot (WiFi)
 
 * Light On/Off
 * Brightnes (Dimmer)  0-100 %
