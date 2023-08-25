@@ -59,7 +59,8 @@ The following Tapo-Devices are supported. For precise channel-description look a
 |                                    | L920        | Multicolor RGB-IC ColorZone LightStrip (5m)  |
 |                                    | L930        | Multicolor RGBW-IC 50-Zone LightStrip (5m)   |
 | Smart Hub (Wi-Fi / RF)             | H100        | Smart Hub with Chime to control Child Devices|
-| Smart Contact Sensot (RF)          | T110        | Window/Door Smart Contact Sensor             |
+| Smart Contact Sensor (RF)          | T110        | Window/Door Smart Contact Sensor             |
+| Smar Temperature Sensor (RF)       | T310        | Temperature and Humidity Sensor              |
 
 ## Prerequisites
 
@@ -90,16 +91,21 @@ The thing has the following configuration parameters:
 | username           | Username (eMail) of your Tapo-Cloud                                  |
 | password           | Password of your Tapo-Cloud                                          |
 
-## Thing Configuration
+## Thing Configurations
 
-The thing needs to be configured with `ipAddress`.
+WiFi-Things needs to be configured with `ipAddress`.
+RF-Things need a Hub (WiFi-Device) to operate. 
 
 The thing has the following configuration parameters:
 
-| Parameter          | Description                                                          |
-|--------------------|----------------------------------------------------------------------|
-| ipAddress          | IP Address of the device.                                            |
-| pollingInterval    | Refresh interval in seconds. Optional. The default is 30 seconds     |
+| DeviceType        | Parameter          | Description                                                          |
+|-------------------|--------------------|----------------------------------------------------------------------|
+| Any WiFi-Device   | ipAddress          | IP Address of the device.                                            |
+|                   | pollingInterval    | Refresh interval in seconds. Optional. The default is 30 seconds     |
+| SmartHub          | ipAddress          | IP Address of the hub.                                               |
+|                   | pollingInterval    | Refresh interval in seconds. Optional. The default is 10 seconds     |
+|                   | backgroundDiscovery| RF-Devices will be discovered after every polling request            |
+
 
 ## Channels
 
@@ -114,7 +120,9 @@ All devices support some of the following channels:
 |           | brightness       | Dimmer                 | Brightness 0-100%                   | L510, L530, L610, L630, L900, L920                               |
 |           | colorTemperature | Number                 | White-Color-Temp 2500-6500K         | L510, L530, L610, L630, L900, L920                               |
 |           | color            | Color                  | Color                               | L530, L630, L900, L920                                           |
-|           | isOpen           | Switch                 | Contact (Door/Window) is Open       | T110                                                             |
+| sensor    | isOpen           | Switch                 | Contact (Door/Window) is Open       | T110                                                             |
+|           | currentTemp      | Number:Temperature     | Current Temperature                 | T310                                                             |
+|           | currentHumidity  | Number:Dimensionless   | Current relative humidity in %      | T310                                                             |
 | effects   | fxName           | String                 | Active lightning effect             | L530                                                             |
 | device    | wifiSignal       | Number                 | WiFi-quality-level                  | P100, P105, P110, P115, L510, L530, L610, L630, L900, L920, L930 |
 |           | onTime           | Number:Time            | seconds output is on                | P100, P105, P110, P115, L510, L530, L900, L920, L930             |
@@ -126,7 +134,6 @@ All devices support some of the following channels:
 |           | todayRuntime     | Number:Time            | seconds output was on today         | P110, P115                                                       |
 | alarm     | alarmActive      | Switch                 | Alarm is currntly active            | H100                                                             |
 |           | alarmSource      | String                 | Source causes active alarm          | H100                                                             |
-
 
 ## Channel Refresh
 
