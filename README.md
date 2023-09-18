@@ -9,3 +9,8 @@ Binding to get data from Asus-Router
 
 Binding to control smart devices by Tapo (TP-Link)
 [TapoControl](https://github.com/wildcs/oh3_compiled-addons/tree/tapocontrol)
+
+
+#### BuyMeACoffee
+
+If you like my work, [buy me a coffe](https://www.buymeacoffee.com/wildcs)
