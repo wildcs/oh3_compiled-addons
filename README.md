@@ -2,11 +2,14 @@ If you like my work and you'll support me for buying new hardware please buy me 
 [![buymeacoffee](doc/buymeacoffee.png)](https://www.buymeacoffee.com/wildcs)
 
 ## Changelog:
-#### 2023-09-20 Preparation for KLAP Protocol:
-completely new core code becaus of protocol change for some devices.
-   preparation for new klap protocol
+#### 2023-09-25 KLAP Protocol-integration:
+completely new core code because of protocol change for some devices.
+   new klap protocol integration
    T310 and T315 Wheather-Sensors supported
-   !!! Known issues:  P300 Socket-Strip not integrated"
+   ***!!! Known issues:***
+
+   * P300 Socket-Strip not integrated
+   * Protocol has to be selected manually in advanced settings
 
 #### 2023-08-23 Update Snapshot 4.1.0 version:
 uploaded snapshot 4.1.0 version with new features:
