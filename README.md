@@ -1,5 +1,8 @@
 ## OH3 compiled Addons by WildCS :
 
+If you like my work and you'll support me for buying new hardware please buy me a coffee
+[![buymeacoffee](doc/buymeacoffee.png)](https://www.buymeacoffee.com/wildcs)
+
 #### AsusWrt
    
 Binding to get data from Asus-Router
@@ -10,7 +13,3 @@ Binding to get data from Asus-Router
 Binding to control smart devices by Tapo (TP-Link)
 [TapoControl](https://github.com/wildcs/oh3_compiled-addons/tree/tapocontrol)
 
-
-#### BuyMeACoffee
-
-If you like my work, [buy me a coffe](https://www.buymeacoffee.com/wildcs)
