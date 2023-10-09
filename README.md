@@ -70,7 +70,8 @@ The following Tapo-Devices are supported. For precise channel-description look a
 |                                    | L930        | Multicolor RGBW-IC 50-Zone LightStrip (5m)   |
 | Smart Hub (Wi-Fi / RF)             | H100        | Smart Hub with Chime to control Child Devices|
 | Smart Contact Sensor (RF)          | T110        | Window/Door Smart Contact Sensor             |
-| Smar Temperature Sensor (RF)       | T310        | Temperature and Humidity Sensor              |
+| Smart Temperature Sensor (RF)      | T310        | Temperature and Humidity Sensor              |
+|                                    | T315        | Temperature and Humidity Sensor with Display |
 
 ## Prerequisites
 
@@ -106,15 +107,14 @@ The thing has the following configuration parameters:
 WiFi-Things needs to be configured with `ipAddress`.
 RF-Things need a Hub (WiFi-Device) to operate. 
 
-The thing has the following configuration parameters:
+The things has the following configuration parameters:
 
-| DeviceType        | Parameter          | Description                                                          |
-|-------------------|--------------------|----------------------------------------------------------------------|
-| Any WiFi-Device   | ipAddress          | IP Address of the device.                                            |
-|                   | pollingInterval    | Refresh interval in seconds. Optional. The default is 30 seconds     |
-| SmartHub          | ipAddress          | IP Address of the hub.                                               |
-|                   | pollingInterval    | Refresh interval in seconds. Optional. The default is 10 seconds     |
-|                   | backgroundDiscovery| RF-Devices will be discovered after every polling request            |
+| Parameter          | Description                                                           | Things supporting parameter |
+|--------------------|-----------------------------------------------------------------------|-----------------------------|
+| ipAddress          | IP Address of the device.                                             | Any Wi-Fi-Device            |
+| pollingInterval    | [optional] Refresh interval in seconds. The default is 30 seconds     | Any Wi-Fi-Device            |
+| httpPort           | [optional] HTTP-Communication Port. Default is 80                     | Any Wi-Fi-Device            |
+| backgroundDiscovery| [optional] RF-Devices will be discovered after every polling request  | SmartHub                    |
 
 
 ## Channels
@@ -131,8 +131,8 @@ All devices support some of the following channels:
 |           | colorTemperature | Number                 | White-Color-Temp 2500-6500K         | L510, L530, L610, L630, L900, L920                               |
 |           | color            | Color                  | Color                               | L530, L630, L900, L920                                           |
 | sensor    | isOpen           | Switch                 | Contact (Door/Window) is Open       | T110                                                             |
-|           | currentTemp      | Number:Temperature     | Current Temperature                 | T310                                                             |
-|           | currentHumidity  | Number:Dimensionless   | Current relative humidity in %      | T310                                                             |
+|           | currentTemp      | Number:Temperature     | Current Temperature                 | T310, T315                                                       |
+|           | currentHumidity  | Number:Dimensionless   | Current relative humidity in %      | T310, T315                                                       |
 | effects   | fxName           | String                 | Active lightning effect             | L530                                                             |
 | device    | wifiSignal       | Number                 | WiFi-quality-level                  | P100, P105, P110, P115, L510, L530, L610, L630, L900, L920, L930 |
 |           | onTime           | Number:Time            | seconds output is on                | P100, P105, P110, P115, L510, L530, L900, L920, L930             |
@@ -156,10 +156,10 @@ To minimize network traffic the default refresh-rate is set to 30 seconds. This 
 
 ```java
 tapocontrol:bridge:myTapoBridge                 "Cloud-Login"               [ username="you@yourpovider.com", password="verysecret" ]
-tapocontrol:P100:myTapoBridge:mySocket          "My-Socket"     (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.150", pollingInterval=30 ]
-tapocontrol:L510:myTapoBridge:whiteBulb         "white-light"   (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.151", pollingInterval=30 ]
-tapocontrol:L530:myTapoBridge:colorBulb         "color-light"   (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.152", pollingInterval=30 ]
-tapocontrol:L900:myTapoBridge:myLightStrip      "light-strip"   (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.153", pollingInterval=30 ]
+tapocontrol:P100:myTapoBridge:mySocket          "My-Socket"     (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.150" ]
+tapocontrol:L510:myTapoBridge:whiteBulb         "white-light"   (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.151", httpPort=80, pollingInterval=30, protocol="securePassthrough" ]
+tapocontrol:L530:myTapoBridge:colorBulb         "color-light"   (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.152", pollingInterval=30, protocol="klap" ]
+tapocontrol:L900:myTapoBridge:myLightStrip      "light-strip"   (tapocontrol:bridge:myTapoBridge)   [ ipAddress="192.168.178.153", pollingInterval=30, protocol="passthrough" ]
 
 Bridge tapocontrol:bridge:secondBridgeExample            "Cloud-Login"        [ username="youtoo@anyprovider.com", password="verysecret" ] {
    Thing P110 mySocket   "My-Socket"          [ ipAddress="192.168.101.51", pollingInterval=30 ]
