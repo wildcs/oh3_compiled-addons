@@ -8,7 +8,6 @@ completely new core code because of protocol change for some devices.
    T310 and T315 Wheather-Sensors supported
    ***!!! Known issues:***
 
-   * P300 Socket-Strip not integrated
    * Protocol has to be selected manually in advanced settings
 
 #### 2023-08-23 Update Snapshot 4.1.0 version:
