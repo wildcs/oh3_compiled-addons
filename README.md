@@ -1,5 +1,16 @@
-If you like my work and you'll support me for buying new hardware please buy me a coffee
+If you like my work and you'll support me for buying new hardware please buy me a coffee  
 [![buymeacoffee](doc/buymeacoffee.png)](https://www.buymeacoffee.com/wildcs)
+
+## Install Binding manually:
+
+1 - Remove the TapoControl Binding from the Binding interface  
+2 - Download the latest snapshot “org.openhab.binding.tapocontrol-x.x.x-SNAPSHOT.jar” for your version from here   
+3 - Put that file `/usr/share/openhab/addons/`  
+4 - Set file permission : `sudo chown openhab:openhab /usr/share/openhab/addons/org.openhab.binding.tapocontrol-x.x.x-SNAPSHOT.jar`  
+5 - Stop openhab : `sudo service openhab stop`  
+6 - Clean cache (just in case) : `sudo openhab-cli clean-cache`  
+7 - Start openhab : `sudo service openhab start`  
+8 - Buy me a coffee :wink: 
 
 ## Changelog:
 
