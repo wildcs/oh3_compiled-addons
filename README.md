@@ -14,6 +14,12 @@ If you like my work and you'll support me for buying new hardware please buy me 
 
 ## Changelog:
 
+#### 2023-12-31 Update Snapshot V4.2.0 version:
+uploaded snapshot 4.2.0 version with some fixes: (Wish a happy new year)
+   Fixed multiple-request for smart-bulbs hw-v1
+   Fixed lighteffects for LightStrips
+   Fixed Matter-Devices not working (PxxxM)
+
 #### 2023-10-30 Integration local UDP-Discovery:
 local online devices can now be discovered via udp and cloud.
    L9x0 LightStrips now supporting light effects
