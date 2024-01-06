@@ -77,9 +77,9 @@ The following Tapo-Devices are supported. For precise channel-description look a
 
 | DeviceType                         | ThingType   | Description                                  |
 |------------------------------------|-------------|----------------------------------------------|
-| SmartPlug (Wi-Fi)                  | P100        | Smart Socket                                 |
+| SmartPlug (Wi-Fi)                  | P100(M)     | Smart Socket                                 |
 |                                    | P105        | Smart Mini Socket                            |
-| EnergyMonitoring SmartPlug (Wi-Fi) | P110        | Energy Monitoring Smart Socket               |
+| EnergyMonitoring SmartPlug (Wi-Fi) | P110(M)     | Energy Monitoring Smart Socket               |
 |                                    | P115        | Energy Monitoring Mini Smart Socket          |
 | Power Strip (Wi-Fi)                | P300        | Smart Wi-Fi Power Strip - 3 sockets          |
 | Dimmable SmartBulb (Wi-Fi)         | L510        | Dimmable White-Light Smart-Bulb (E27)        |
@@ -165,10 +165,11 @@ All devices support some of the following channels:
 |           | brightness       | Dimmer                 | Brightness 0-100%                   | L510, L530, L610, L630, L900, L920                               |
 |           | colorTemperature | Number                 | White-Color-Temp 2500-6500K         | L510, L530, L610, L630, L900, L920                               |
 |           | color            | Color                  | Color                               | L530, L630, L900, L920                                           |
+|           | mode             | String                 | Active mode (List)                  | L530                                                             |
 | sensor    | isOpen           | Switch                 | Contact (Door/Window) is Open       | T110                                                             |
 |           | currentTemp      | Number:Temperature     | Current Temperature                 | T310, T315                                                       |
 |           | currentHumidity  | Number:Dimensionless   | Current relative humidity in %      | T310, T315                                                       |
-| effects   | fxName           | String                 | Active lightning effect             | L530, L900, L920, L930                                                           |
+| effects   | fxName           | String                 | Active lightning effect (List)      | L530, L900, L920, L930                                           |
 | device    | wifiSignal       | Number                 | WiFi-quality-level                  | P100, P105, P110, P115, L510, L530, L610, L630, L900, L920, L930 |
 |           | onTime           | Number:Time            | seconds output is on                | P100, P105, P110, P115, L510, L530, L900, L920, L930             |
 |           | signalStrength   | Number                 | RF-quality-level                    | T110                                                             |
