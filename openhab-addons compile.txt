@@ -1,0 +1,19 @@
+#################################
+      BEFORE PUBLISH:
+#################################
+
+
+MVN CLEAN INSTALL:
+---------------------------------------
+mvn clean install
+
+
+GENERATE TRANSLATIONS FILE
+---------------------------------------
+mvn i18n:generate-default-translations
+
+
+CHECK JAVADOK: (No Errors - Warning okay)
+---------------------------------------
+mvn javadoc:javadoc
+
